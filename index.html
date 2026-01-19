@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Damla'nın Tatlı Köşesi ✨</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <meta name="theme-color" content="#ff6aa2" />
+</head>
+<body>
+  <div class="bg-blobs" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <main class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">D</div>
+        <div class="title">
+          <h1>Damla'nın Tatlı Köşesi</h1>
+          <p>minik hedefler • güzel anılar • bol gülümseme </p>
+        </div>
+      </div>
+
+      <nav class="tabs" role="tablist" aria-label="Mod Seçimi">
+        <button class="tab active" role="tab" aria-selected="true" data-view="todo">
+          ✅ To-Do
+        </button>
+        <button class="tab" role="tab" aria-selected="false" data-view="timeline">
+          🕰️ Timeline
+        </button>
+      </nav>
+    </header>
+
+    <section class="card hero">
+      <div class="hero-left">
+        <h2 id="moodTitle">Bugün Damla gibi parlıyoruz ✨</h2>
+        <div id="moodBadge" class="badge">Başlangıç</div>
+        <p id="moodDesc">Küçük adımlar = büyük mutluluk. Hadi bir şeyleri tamamlayalım!</p>
+        <div class="meter">
+          <div class="meter-head">
+            <span>İlerleme</span>
+            <strong id="progressText">0%</strong>
+          </div>
+          <div class="meter-bar" aria-label="İlerleme çubuğu">
+            <div id="meterFill" class="meter-fill" style="width:0%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right" aria-hidden="true">
+        <div id="moodFace" class="mood-face">🙂</div>
+        <div class="sparkles">✨ ✨ ✨</div>
+      </div>
+    </section>
+
+    <!-- TO-DO VIEW -->
+    <section id="viewTodo" class="view">
+      <section class="card">
+        <div class="row">
+          <h3>Damla’nın To-Do Listesi</h3>
+          <button id="btnSeed" class="btn ghost" title="Örnek görevler ekle">🌱 Örnek ekle</button>
+        </div>
+
+        <form id="todoForm" class="todo-form" autocomplete="off">
+          <input id="todoInput" type="text" placeholder="Yeni hedef yaz… (örn: 10 dk yürüyüş)" maxlength="80" />
+          <button class="btn primary" type="submit">Ekle</button>
+        </form>
+
+        <div class="todo-actions">
+          <button id="btnClearDone" class="btn" type="button">🧹 Yapılanları temizle</button>
+          <button id="btnClearAll" class="btn danger" type="button">🗑️ Hepsini sil</button>
+        </div>
+
+        <ul id="todoList" class="todo-list" aria-label="Yapılacaklar listesi"></ul>
+
+        <p class="hint">
+          İpucu: Bir göreve <kbd>tıkla</kbd> tamamlandı yap
+        </p>
+      </section>
+    </section>
+
+    <!-- TIMELINE VIEW -->
+    <section id="viewTimeline" class="view hidden">
+      <section class="card">
+        <div class="row">
+          <h3>Damla’nın Timeline’ı</h3>
+          <div class="pill">Anılar birikince güzelleşir 📸</div>
+        </div>
+
+        <div class="timeline-layout">
+          <aside class="timeline-rail" aria-label="Dönemler">
+            <button class="period active" data-period="cocukluk">🧸 Çocukluk</button>
+            <button class="period" data-period="genclik">🎒 Gençlik</button>
+            <button class="period" data-period="bugun">🌸 Bugün</button>
+          </aside>
+
+          <section class="timeline-panel">
+            <div class="panel-head">
+              <div>
+                <h4 id="periodTitle">Çocukluk</h4>
+                <p id="periodDesc" class="muted">Minik Damla’nın tatlı anıları 🥹</p>
+              </div>
+
+              <details class="add-photo">
+                <summary class="btn primary">➕ Foto ekle</summary>
+                <div class="add-photo-box">
+                  <label class="label">Foto URL</label>
+                  <input id="photoUrl" type="url" placeholder="https://..." />
+                  <label class="label">Kısa not</label>
+                  <input id="photoNote" type="text" placeholder="örn: İlk bisikletim!" maxlength="60" />
+                  <button id="btnAddPhoto" class="btn" type="button">Ekle</button>
+                  <p class="tiny muted">Not: GitHub Pages için URL ile eklemek pratik. (İstersen sonra local dosya da ekleriz.)</p>
+                </div>
+              </details>
+            </div>
+
+            <div id="photoGrid" class="photo-grid" aria-label="Fotoğraflar"></div>
+          </section>
+        </div>
+      </section>
+    </section>
+
+    <footer class="footer">
+      <p>
+        Made for <strong>Damla</strong> 
+      </p>
+    </footer>
+  </main>
+
+  <div id="confetti" class="confetti" aria-hidden="true"></div>
+  <script src="./script.js"></script>
+</body>
+</html>
