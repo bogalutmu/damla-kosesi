@@ -1,136 +1,1004 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Damla'nın Tatlı Köşesi ✨</title>
-  <link rel="stylesheet" href="./styles.css" />
-  <meta name="theme-color" content="#ff6aa2" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Canım Annem</title>
+
+  <style>
+    :root {
+      --bg1: #fff4f7;
+      --bg2: #fff9e8;
+      --bg3: #eefaf5;
+      --pink: #ff5f93;
+      --pink-dark: #c73d73;
+      --text: #472a36;
+      --muted: #725863;
+      --white: #ffffff;
+      --shadow: rgba(102, 40, 76, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text);
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(255, 209, 102, 0.28), transparent 24%),
+        radial-gradient(circle at 85% 12%, rgba(255, 111, 145, 0.24), transparent 26%),
+        radial-gradient(circle at 55% 95%, rgba(121, 198, 163, 0.26), transparent 28%),
+        linear-gradient(135deg, var(--bg1), var(--bg2) 50%, var(--bg3));
+    }
+
+    .page {
+      position: relative;
+      min-height: 100vh;
+      padding: 28px 18px 40px;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 2;
+      width: min(1220px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 34px;
+      align-items: center;
+      padding: 34px;
+      border-radius: 36px;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 28px 80px var(--shadow);
+      overflow: hidden;
+      animation: enter 0.9s ease both;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 16px;
+      border: 2px dashed rgba(255, 111, 145, 0.18);
+      border-radius: 28px;
+      pointer-events: none;
+    }
+
+    h1 {
+      max-width: 650px;
+      font-size: clamp(2.25rem, 5.4vw, 5rem);
+      line-height: 1.12;
+      letter-spacing: -1.6px;
+      margin-bottom: 22px;
+      overflow: visible;
+    }
+
+    h1 .name,
+    h1 .accent {
+      display: block;
+      line-height: 1.08;
+      padding-bottom: 0.08em;
+      overflow: visible;
+    }
+
+    h1 .name {
+      color: var(--text);
+    }
+
+    h1 .accent {
+      background: linear-gradient(90deg, #ff4f81, #eb55a8, #ff9f68);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: glow 3s ease-in-out infinite;
+    }
+
+    .message {
+      max-width: 600px;
+      font-size: clamp(1rem, 1.65vw, 1.14rem);
+      line-height: 1.82;
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .typewriter {
+      min-height: 34px;
+      font-size: 1.08rem;
+      font-weight: 900;
+      color: var(--pink-dark);
+      margin-bottom: 24px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    button,
+    .pill-link {
+      border: none;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 14px 20px;
+      font-size: 1rem;
+      font-weight: 900;
+      text-decoration: none;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    button {
+      color: var(--white);
+      background: linear-gradient(135deg, #ff688f, #ff9966);
+      box-shadow: 0 15px 34px rgba(255, 95, 143, 0.28);
+    }
+
+    .pill-link {
+      color: #a8325f;
+      background: #fff1f7;
+      box-shadow: 0 12px 26px rgba(168, 50, 95, 0.10);
+    }
+
+    button:hover,
+    .pill-link:hover {
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    .mini-cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      max-width: 640px;
+    }
+
+    .mini-card {
+      padding: 16px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: 0 12px 28px rgba(120, 45, 80, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.78);
+      transform: rotate(var(--r));
+      transition: transform 0.25s ease;
+    }
+
+    .mini-card:hover {
+      transform: rotate(0deg) translateY(-5px);
+    }
+
+    .mini-card .icon {
+      font-size: 1.55rem;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .mini-card strong {
+      display: block;
+      color: #9a2e5b;
+      margin-bottom: 6px;
+      font-size: 1.05rem;
+    }
+
+    .mini-card p {
+      font-size: 0.94rem;
+      line-height: 1.5;
+      color: #6b4c58;
+    }
+
+    .visual {
+      position: relative;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .memory-board {
+      position: relative;
+      width: min(590px, 94vw);
+      height: 680px;
+    }
+
+    .photo-polaroid {
+      position: absolute;
+      left: 0;
+      top: 18px;
+      width: 300px;
+      padding: 14px 14px 74px;
+      border-radius: 26px;
+      background: #ffffff;
+      box-shadow: 0 24px 55px rgba(75, 25, 55, 0.18);
+      transform: rotate(-5deg);
+      animation: floatPhoto 5s ease-in-out infinite;
+      z-index: 2;
+    }
+
+    .photo-polaroid::before {
+      content: "";
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      width: 102px;
+      height: 32px;
+      transform: translateX(-50%) rotate(4deg);
+      border-radius: 9px;
+      background: rgba(246, 215, 117, 0.92);
+      box-shadow: 0 7px 16px rgba(130, 90, 20, 0.12);
+    }
+
+    .photo-polaroid img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      display: block;
+      border-radius: 18px;
+      background: #ffe7f1;
+    }
+
+    .photo-label {
+      position: absolute;
+      bottom: 24px;
+      left: 16px;
+      right: 16px;
+      text-align: center;
+      font-weight: 900;
+      color: #994061;
+      font-size: 1.02rem;
+      line-height: 1.28;
+      z-index: 5;
+    }
+
+    .note {
+      position: absolute;
+      right: 22px;
+      top: 84px;
+      width: 190px;
+      padding: 18px 16px;
+      border-radius: 20px;
+      background: #fff4c7;
+      box-shadow: 0 18px 38px rgba(110, 75, 0, 0.12);
+      transform: rotate(6deg);
+      animation: wiggle 3s ease-in-out infinite;
+      z-index: 4;
+    }
+
+    .note::before {
+      content: "🌷";
+      display: block;
+      font-size: 1.5rem;
+      margin-bottom: 4px;
+    }
+
+    .note strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #955700;
+      font-size: 1.05rem;
+    }
+
+    .note p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #72520d;
+    }
+
+    .signature-card {
+      position: absolute;
+      left: 8px;
+      bottom: 18px;
+      width: 230px;
+      padding: 16px 18px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.90);
+      box-shadow: 0 18px 42px rgba(80, 35, 60, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      transform: rotate(2deg);
+      z-index: 4;
+    }
+
+    .signature-card .small {
+      font-size: 0.88rem;
+      color: #8c6280;
+      margin-bottom: 6px;
+    }
+
+    .signature-card strong {
+      display: block;
+      font-size: 1.08rem;
+      color: #a13362;
+      margin-bottom: 8px;
+    }
+
+    .signature-card p {
+      font-size: 0.94rem;
+      line-height: 1.55;
+      color: #70505d;
+    }
+
+    .character-card {
+      position: absolute;
+      right: -10px;
+      bottom: 12px;
+      width: 320px;
+      padding: 16px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.90), rgba(255,255,255,0.76));
+      box-shadow: 0 26px 50px rgba(98, 44, 72, 0.16);
+      border: 1px solid rgba(255,255,255,0.86);
+      z-index: 3;
+      animation: softBounce 4s ease-in-out infinite;
+      filter: drop-shadow(0 16px 26px rgba(98, 44, 72, 0.12));
+    }
+
+    .character-card img {
+      width: 100%;
+      display: block;
+      object-fit: contain;
+      border-radius: 20px;
+    }
+
+    .gift-box {
+      position: fixed;
+      left: 18px;
+      bottom: 18px;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.84);
+      box-shadow: 0 16px 38px rgba(90, 30, 62, 0.14);
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.25s ease;
+    }
+
+    .gift-box:hover {
+      transform: translateY(-4px);
+    }
+
+    .gift-emoji {
+      font-size: 1.6rem;
+      animation: giftShake 1.8s ease-in-out infinite;
+    }
+
+    .gift-box span:last-child {
+      font-size: 0.95rem;
+      color: #8c365c;
+      font-weight: 900;
+    }
+
+    .music-box {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.84);
+      box-shadow: 0 16px 38px rgba(90, 30, 62, 0.14);
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.25s ease;
+      font-weight: 900;
+      color: #8c365c;
+    }
+
+    .music-box:hover {
+      transform: translateY(-4px);
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(61, 36, 48, 0.38);
+      backdrop-filter: blur(9px);
+    }
+
+    .modal.show {
+      display: flex;
+      animation: fadeIn 0.25s ease both;
+    }
+
+    .letter {
+      width: min(680px, 100%);
+      padding: 34px;
+      border-radius: 32px;
+      background: #fffaf4;
+      position: relative;
+      box-shadow: 0 32px 90px rgba(50, 20, 35, 0.24);
+      animation: popIn 0.45s ease both;
+    }
+
+    .letter h2 {
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      margin-bottom: 14px;
+      color: #b93668;
+    }
+
+    .letter p {
+      font-size: 1.08rem;
+      line-height: 1.9;
+      color: #563843;
+    }
+
+    .close-btn {
+      margin-top: 24px;
+      padding: 12px 18px;
+    }
+
+    .floating {
+      position: fixed;
+      top: -44px;
+      z-index: 1;
+      pointer-events: none;
+      animation: fall linear forwards;
+    }
+
+    #youtube-player {
+      position: fixed;
+      width: 1px;
+      height: 1px;
+      left: -9999px;
+      top: -9999px;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @keyframes enter {
+      from { opacity: 0; transform: translateY(24px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes glow {
+      0%, 100% { filter: drop-shadow(0 0 0 rgba(255, 111, 145, 0)); }
+      50% { filter: drop-shadow(0 9px 18px rgba(255, 111, 145, 0.28)); }
+    }
+
+    @keyframes floatPhoto {
+      0%, 100% { transform: rotate(-5deg) translateY(0); }
+      50% { transform: rotate(-2deg) translateY(-12px); }
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(6deg); }
+      50% { transform: rotate(3deg) translateY(-6px); }
+    }
+
+    @keyframes softBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes giftShake {
+      0%, 100% { transform: rotate(0); }
+      20% { transform: rotate(-8deg); }
+      40% { transform: rotate(8deg); }
+      60% { transform: rotate(-5deg); }
+      80% { transform: rotate(5deg); }
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(calc(100vh + 70px)) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: translateY(18px) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @media (max-width: 980px) {
+      .page {
+        padding: 14px 10px 34px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 24px;
+        gap: 20px;
+      }
+
+      .visual {
+        order: 0;
+        min-height: 670px;
+      }
+
+      .mini-cards {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+      }
+
+      .character-card {
+        width: 290px;
+        right: -4px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 10px 8px 28px;
+      }
+
+      .hero {
+        border-radius: 26px;
+        padding: 20px;
+      }
+
+      .hero::before {
+        inset: 10px;
+        border-radius: 22px;
+      }
+
+      h1 {
+        font-size: clamp(2.15rem, 12.5vw, 3.8rem);
+        line-height: 1.12;
+        letter-spacing: -1px;
+        margin-bottom: 18px;
+      }
+
+      h1 .name,
+      h1 .accent {
+        line-height: 1.08;
+        padding-bottom: 0.08em;
+      }
+
+      .message {
+        font-size: 1rem;
+        line-height: 1.72;
+      }
+
+      .actions {
+        gap: 10px;
+      }
+
+      .actions button,
+      .actions .pill-link {
+        width: 100%;
+        text-align: center;
+      }
+
+      .visual {
+        min-height: 640px;
+        margin-top: 8px;
+      }
+
+      .memory-board {
+        width: 100%;
+        height: 640px;
+        transform: none;
+      }
+
+      .photo-polaroid {
+        left: 50%;
+        top: 12px;
+        width: min(280px, 82vw);
+        padding-bottom: 68px;
+        transform: translateX(-50%) rotate(-4deg);
+      }
+
+      .photo-label {
+        bottom: 22px;
+        font-size: 0.95rem;
+      }
+
+      .note {
+        right: 0;
+        top: 260px;
+        width: 170px;
+        transform: rotate(5deg);
+      }
+
+      .signature-card {
+        left: 0;
+        bottom: 14px;
+        width: 210px;
+      }
+
+      .character-card {
+        right: 0;
+        bottom: 82px;
+        width: 220px;
+        padding: 12px;
+      }
+
+      .mini-card {
+        transform: none;
+      }
+
+      .gift-box {
+        left: 10px;
+        bottom: 10px;
+        padding: 11px 13px;
+      }
+
+      .music-box {
+        right: 10px;
+        bottom: 10px;
+        padding: 11px 13px;
+      }
+
+      .gift-box span:last-child,
+      .music-box span:last-child {
+        display: none;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .visual {
+        min-height: 610px;
+      }
+
+      .memory-board {
+        height: 610px;
+      }
+
+      .photo-polaroid {
+        width: 250px;
+      }
+
+      .note {
+        top: 234px;
+        width: 158px;
+      }
+
+      .character-card {
+        width: 200px;
+        bottom: 86px;
+      }
+
+      .signature-card {
+        width: 195px;
+        bottom: 12px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="bg-blobs" aria-hidden="true">
-    <div class="blob b1"></div>
-    <div class="blob b2"></div>
-    <div class="blob b3"></div>
-  </div>
+  <main class="page">
+    <section class="hero">
+      <div class="content">
+        <h1>
+          <span class="name">Canım Annem,</span>
+          <span class="accent">Kalbimin en sıcak yeri sensin</span>
+        </h1>
 
-  <main class="app">
-    <header class="topbar">
-      <div class="brand">
-        <div class="logo" aria-hidden="true">D</div>
-        <div class="title">
-          <h1>Damla'nın Tatlı Köşesi</h1>
-          <p>minik hedefler • güzel anılar • bol gülümseme </p>
-        </div>
-      </div>
-
-      <nav class="tabs" role="tablist" aria-label="Mod Seçimi">
-        <button class="tab active" role="tab" aria-selected="true" data-view="todo">
-          ✅ To-Do
-        </button>
-        <button class="tab" role="tab" aria-selected="false" data-view="timeline">
-          🕰️ Timeline
-        </button>
-      </nav>
-    </header>
-
-    <section class="card hero">
-      <div class="hero-left">
-        <h2 id="moodTitle">Bugün Damla gibi parlıyoruz ✨</h2>
-        <div id="moodBadge" class="badge">Başlangıç</div>
-        <p id="moodDesc">Küçük adımlar = büyük mutluluk. Hadi bir şeyleri tamamlayalım!</p>
-        <div class="meter">
-          <div class="meter-head">
-            <span>İlerleme</span>
-            <strong id="progressText">0%</strong>
-          </div>
-          <div class="meter-bar" aria-label="İlerleme çubuğu">
-            <div id="meterFill" class="meter-fill" style="width:0%"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-right" aria-hidden="true">
-        <div id="moodFace" class="mood-face">🙂</div>
-        <div class="sparkles">✨ ✨ ✨</div>
-      </div>
-    </section>
-
-    <!-- TO-DO VIEW -->
-    <section id="viewTodo" class="view">
-      <section class="card">
-        <div class="row">
-          <h3>Damla’nın To-Do Listesi</h3>
-          <button id="btnSeed" class="btn ghost" title="Örnek görevler ekle">🌱 Örnek ekle</button>
-        </div>
-
-        <form id="todoForm" class="todo-form" autocomplete="off">
-          <input id="todoInput" type="text" placeholder="Yeni hedef yaz… (örn: 10 dk yürüyüş)" maxlength="80" />
-          <button class="btn primary" type="submit">Ekle</button>
-        </form>
-
-        <div class="todo-actions">
-          <button id="btnClearDone" class="btn" type="button">🧹 Yapılanları temizle</button>
-          <button id="btnClearAll" class="btn danger" type="button">🗑️ Hepsini sil</button>
-        </div>
-
-        <ul id="todoList" class="todo-list" aria-label="Yapılacaklar listesi"></ul>
-
-        <p class="hint">
-          İpucu: Bir göreve <kbd>tıkla</kbd> tamamlandı yap
+        <p class="message">
+          Bu sayfayı sana içimden gelen güzel şeyleri söylemek için hazırladım.
+          Beraber yaşadığımız anıları düşündükçe ne kadar şanslı olduğumu bir kez daha hissediyorum.
+          Çünkü senin sevgin bana hep huzuru, güveni ve gerçek sevgiyi hatırlatıyor.
+          İyi ki varsın, iyi ki benim annemsin.
         </p>
-      </section>
-    </section>
 
-    <!-- TIMELINE VIEW -->
-    <section id="viewTimeline" class="view hidden">
-      <section class="card">
-        <div class="row">
-          <h3>Damla’nın Timeline’ı</h3>
-          <div class="pill">Anılar birikince güzelleşir 📸</div>
+        <div class="typewriter" id="typewriter"></div>
+
+        <div class="actions">
+          <button onclick="openLetter()">Mektubu Aç 💌</button>
+          <a class="pill-link" href="#" onclick="createHeartBurst(event)">Kalp Yağmuru Başlat 💖</a>
+          <a class="pill-link" href="#" onclick="changeMemory(event)">Anıyı Değiştir 📸</a>
         </div>
 
-        <div class="timeline-layout">
-          <aside class="timeline-rail" aria-label="Dönemler">
-            <button class="period active" data-period="cocukluk">🧸 Çocukluk</button>
-            <button class="period" data-period="genclik">🎒 Gençlik</button>
-            <button class="period" data-period="bugun">🌸 Bugün</button>
-          </aside>
+        <div class="mini-cards">
+          <div class="mini-card" style="--r:-2deg">
+            <span class="icon">☕</span>
+            <strong>Birlikte kahve</strong>
+            <p>En güzel sohbetlerin başladığı küçük ama çok kıymetli anlar.</p>
+          </div>
 
-          <section class="timeline-panel">
-            <div class="panel-head">
-              <div>
-                <h4 id="periodTitle">Çocukluk</h4>
-                <p id="periodDesc" class="muted">Minik Damla’nın tatlı anıları 🥹</p>
-              </div>
+          <div class="mini-card" style="--r:2deg">
+            <span class="icon">🍰</span>
+            <strong>Tatlı bir anı</strong>
+            <p>Senin gülüşün bile bulunduğu yeri daha sıcak ve güzel yapıyor.</p>
+          </div>
 
-              <details class="add-photo">
-                <summary class="btn primary">➕ Foto ekle</summary>
-                <div class="add-photo-box">
-                  <label class="label">Foto URL</label>
-                  <input id="photoUrl" type="url" placeholder="https://..." />
-                  <label class="label">Kısa not</label>
-                  <input id="photoNote" type="text" placeholder="örn: İlk bisikletim!" maxlength="60" />
-                  <button id="btnAddPhoto" class="btn" type="button">Ekle</button>
-                  <p class="tiny muted">Not: GitHub Pages için URL ile eklemek pratik. (İstersen sonra local dosya da ekleriz.)</p>
-                </div>
-              </details>
-            </div>
-
-            <div id="photoGrid" class="photo-grid" aria-label="Fotoğraflar"></div>
-          </section>
+          <div class="mini-card" style="--r:-1deg">
+            <span class="icon">🏡</span>
+            <strong>Ev hissi</strong>
+            <p>Nerede olursam olayım, içimdeki huzurun adı hep sen oldun.</p>
+          </div>
         </div>
-      </section>
-    </section>
+      </div>
 
-    <footer class="footer">
-      <p>
-        Made for <strong>Damla</strong> 
-      </p>
-    </footer>
+      <div class="visual">
+        <div class="memory-board">
+          <div class="photo-polaroid">
+            <img
+              id="memoryPhoto"
+              src="assets/anne-fotograf.jpg"
+              alt="Annemle güzel bir anı"
+              onerror="this.src='assets/ani-2.jpg'"
+            />
+            <div class="photo-label" id="photoLabel">En güzel anılarımızdan biri...</div>
+          </div>
+
+          <div class="note">
+            <strong>Bugünün notu</strong>
+            <p>Sen gülünce sanki evin bütün ışıkları yanıyor.</p>
+          </div>
+
+          <div class="signature-card">
+            <div class="small">Senin için bir not</div>
+            <strong>Sevgiyle, kalpten 💗</strong>
+            <p>
+              Bu küçük sayfa bir hediyeden çok,
+              sana duyduğum sevgiyi anlatan dijital bir hatıra olsun istedim.
+            </p>
+          </div>
+
+          <div class="character-card">
+            <img
+              src="assets/gonul-3d.png"
+              alt="Anne ve çocuk 3D görseli"
+              onerror="this.style.display='none'"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <div id="confetti" class="confetti" aria-hidden="true"></div>
-  <script src="./script.js"></script>
+  <div class="gift-box" onclick="openGift()">
+    <span class="gift-emoji">🎁</span>
+    <span>Sürpriz kutusuna tıkla</span>
+  </div>
+
+  <div class="music-box" onclick="toggleMusic()" id="musicToggle">
+    <span>🎵</span>
+    <span id="musicLabel">Müziği Aç</span>
+  </div>
+
+  <div class="modal" id="letterModal" onclick="closeModalOnBackdrop(event, 'letterModal')">
+    <div class="letter">
+      <h2>Sevgili Annem,</h2>
+      <p>
+        Bazen insan sevgisini anlatmak için çok büyük kelimeler arıyor.
+        Ama aslında en doğru cümle çok sade:
+        iyi ki benim annemsin.
+        Bana verdiğin sevgi, emek, sabır ve güven hayatımdaki en kıymetli şeylerden biri.
+        Senin varlığın bana her zaman güç ve huzur verdi.
+        Bugün sadece bir kutlama günü değil, kalbimdeki yerini yeniden hissetme günü.
+        Seni çok seviyorum. Anneler Günün kutlu olsun. 💗
+      </p>
+      <button class="close-btn" onclick="closeLetter()">Kapat</button>
+    </div>
+  </div>
+
+  <div class="modal" id="giftModal" onclick="closeModalOnBackdrop(event, 'giftModal')">
+    <div class="letter">
+      <h2>Minik sürpriz 🎁</h2>
+      <p id="giftText">
+        Bugünün hediyesi: Sana kocaman bir sarılma, içten bir teşekkür ve yüzünde tebessüm bırakacak küçük bir hatıra.
+      </p>
+      <button class="close-btn" onclick="nextGiftMessage()">Başka Bir Not Göster ✨</button>
+      <button class="close-btn" onclick="closeGift()">Kapat</button>
+    </div>
+  </div>
+
+  <div id="youtube-player"></div>
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script>
+    const words = [
+      "İyi ki varsın anne.",
+      "Sen benim en güzel şansımsın.",
+      "Sevgin hep içimi ısıtıyor.",
+      "Anneler Günün kutlu olsun."
+    ];
+
+    const memories = [
+      {
+        photo: "assets/anne-fotograf.jpg",
+        label: "En güzel anılarımızdan biri..."
+      },
+      {
+        photo: "assets/ani-2.jpg",
+        label: "Gülüşümüzün saklı kaldığı bir gün..."
+      },
+      {
+        photo: "assets/ani-3.jpg",
+        label: "Kalbimde özel bir yer tutan an..."
+      }
+    ];
+
+    const giftMessages = [
+      "Sen benim çocukluğumun en güvenli yeri oldun.",
+      "Her güzel şeyin içinde biraz senin emeğin var.",
+      "Senin sevgin insanın içini sessizce iyileştiren bir şarkı gibi.",
+      "Bugün sana çiçek değil, kalbimin en güzel köşesini gönderiyorum."
+    ];
+
+    const YOUTUBE_VIDEO_ID = "jfKfPfyJRdk";
+
+    const typewriter = document.getElementById("typewriter");
+    const memoryPhoto = document.getElementById("memoryPhoto");
+    const photoLabel = document.getElementById("photoLabel");
+    const giftText = document.getElementById("giftText");
+    const musicLabel = document.getElementById("musicLabel");
+
+    let wordIndex = 0;
+    let letterIndex = 0;
+    let deleting = false;
+    let memoryIndex = 0;
+    let giftIndex = 0;
+
+    let player;
+    let musicStarted = false;
+
+    function typeLoop() {
+      const currentWord = words[wordIndex];
+      typewriter.textContent = currentWord.slice(0, letterIndex) + "|";
+
+      if (!deleting && letterIndex < currentWord.length) {
+        letterIndex++;
+        setTimeout(typeLoop, 68);
+      } else if (!deleting && letterIndex === currentWord.length) {
+        deleting = true;
+        setTimeout(typeLoop, 1300);
+      } else if (deleting && letterIndex > 0) {
+        letterIndex--;
+        setTimeout(typeLoop, 34);
+      } else {
+        deleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        setTimeout(typeLoop, 260);
+      }
+    }
+
+    function openLetter() {
+      document.getElementById("letterModal").classList.add("show");
+      createHeartBurst();
+      ensureMusicStarted();
+    }
+
+    function closeLetter() {
+      document.getElementById("letterModal").classList.remove("show");
+    }
+
+    function openGift() {
+      document.getElementById("giftModal").classList.add("show");
+      createHeartBurst();
+      ensureMusicStarted();
+    }
+
+    function closeGift() {
+      document.getElementById("giftModal").classList.remove("show");
+    }
+
+    function closeModalOnBackdrop(event, modalId) {
+      if (event.target.id === modalId) {
+        event.target.classList.remove("show");
+      }
+    }
+
+    function nextGiftMessage() {
+      giftIndex = (giftIndex + 1) % giftMessages.length;
+      giftText.textContent = giftMessages[giftIndex];
+      createHeartBurst();
+    }
+
+    function changeMemory(event) {
+      if (event) event.preventDefault();
+      memoryIndex = (memoryIndex + 1) % memories.length;
+      const current = memories[memoryIndex];
+      memoryPhoto.src = current.photo;
+      photoLabel.textContent = current.label;
+      createHeartBurst();
+    }
+
+    function createFloating() {
+      const item = document.createElement("div");
+      item.className = "floating";
+      const options = ["♥", "🌸", "💗", "🌷", "✨"];
+      item.textContent = options[Math.floor(Math.random() * options.length)];
+      item.style.left = Math.random() * 100 + "vw";
+      item.style.fontSize = 16 + Math.random() * 24 + "px";
+      item.style.animationDuration = 4 + Math.random() * 4 + "s";
+      item.style.opacity = 0.55 + Math.random() * 0.35;
+      document.body.appendChild(item);
+      setTimeout(() => item.remove(), 8500);
+    }
+
+    function createHeartBurst(event) {
+      if (event) event.preventDefault();
+      for (let i = 0; i < 28; i++) {
+        setTimeout(createFloating, i * 45);
+      }
+    }
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player("youtube-player", {
+        height: "1",
+        width: "1",
+        videoId: YOUTUBE_VIDEO_ID,
+        playerVars: {
+          autoplay: 1,
+          controls: 0,
+          loop: 1,
+          playlist: YOUTUBE_VIDEO_ID,
+          modestbranding: 1,
+          rel: 0
+        },
+        events: {
+          onReady: function(event) {
+            try {
+              event.target.setVolume(35);
+              event.target.playVideo();
+              musicStarted = true;
+              musicLabel.textContent = "Müziği Kapat";
+            } catch (e) {
+              musicStarted = false;
+              musicLabel.textContent = "Müziği Aç";
+            }
+          }
+        }
+      });
+    }
+
+    function ensureMusicStarted() {
+      if (player && !musicStarted) {
+        try {
+          player.playVideo();
+          player.unMute();
+          player.setVolume(35);
+          musicStarted = true;
+          musicLabel.textContent = "Müziği Kapat";
+        } catch (e) {
+          console.log("Müzik kullanıcı etkileşimi bekliyor.");
+        }
+      }
+    }
+
+    function toggleMusic() {
+      if (!player) return;
+
+      try {
+        const state = player.getPlayerState();
+
+        if (!musicStarted || state !== 1) {
+          player.playVideo();
+          player.unMute();
+          player.setVolume(35);
+          musicStarted = true;
+          musicLabel.textContent = "Müziği Kapat";
+        } else {
+          player.pauseVideo();
+          musicStarted = false;
+          musicLabel.textContent = "Müziği Aç";
+        }
+      } catch (e) {
+        console.log("Müzik kontrolünde hata oluştu:", e);
+      }
+    }
+
+    document.addEventListener("click", () => {
+      ensureMusicStarted();
+    }, { once: true });
+
+    typeLoop();
+    setInterval(createFloating, 950);
+  </script>
 </body>
 </html>
